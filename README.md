@@ -1,4 +1,4 @@
-   # 🚗 Car Dealer Management System
+   # Car Dealer Management System
 
 A RESTful API built with Spring Boot for managing car dealer operations including user authentication, car sales, and real-time currency conversion.
 
