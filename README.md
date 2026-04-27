@@ -7,7 +7,7 @@ A RESTful API built with Spring Boot for managing car dealer operations includin
 ## 🛠️ Technologies Used
 
 - **Java 17**
-- **Spring Boot 3.4.x**
+- **Spring Boot 3.5.13**
 - **Spring Security 6** — JWT-based authentication
 - **Spring Data JPA** — Database operations
 - **PostgreSQL** — Relational database
