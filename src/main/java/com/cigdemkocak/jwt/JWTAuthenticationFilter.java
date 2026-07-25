@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.cigdemkocak.config.SecurityConfig;
 import com.cigdemkocak.exception.BaseException;
 import com.cigdemkocak.exception.ErrorMessage;
 import com.cigdemkocak.exception.MessageType;
@@ -28,6 +29,14 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter{
 	
 	@Autowired
 	private UserDetailsService userDetailsService;
+
+	@Override
+	protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
+		String path = request.getRequestURI();
+		return path.equals(SecurityConfig.REGISTER) || 
+		       path.equals(SecurityConfig.AUTHENTICATE) || 
+		       path.equals(SecurityConfig.REFRESH_TOKEN);
+	}
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
