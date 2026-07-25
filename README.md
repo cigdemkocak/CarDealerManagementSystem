@@ -11,6 +11,7 @@ A RESTful API built with Spring Boot for managing car dealer operations includin
 - **Spring Security 6** — JWT-based authentication
 - **Spring Data JPA** — Database operations
 - **PostgreSQL** — Relational database
+- **Docker & Docker Compose** — Containerization
 - **JWT (jjwt 0.11.5)** — Token generation and validation
 - **Lombok** — Boilerplate reduction
 - **Validation** — Request validation
@@ -98,6 +99,26 @@ A RESTful API built with Spring Boot for managing car dealer operations includin
 ---
 
 ## 🚀 Getting Started
+
+### Option 1: Running with Docker (Recommended)
+
+Make sure you have [Docker](https://www.docker.com/) and Docker Compose installed on your machine.
+
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/cigdemkocak/CarDealerManagementSystem.git](https://github.com/cigdemkocak/CarDealerManagementSystem.git)
+   cd CarDealerManagementSystem
+   
+1. Build and run the application using Docker Compose:
+```bash
+ docker compose up -d --build
+```
+2. The application will be up and running at http://localhost:8080, and PostgreSQL will run on port 5432.
+3. To stop the containers:
+```bash
+ docker compose down
+```
+### Option 2: Running Locally (Manual)
 
 ### Prerequisites
 - Java 17+
