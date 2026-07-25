@@ -103,18 +103,17 @@ A RESTful API built with Spring Boot for managing car dealer operations includin
 ### Option 1: Running with Docker (Recommended)
 
 Make sure you have [Docker](https://www.docker.com/) and Docker Compose installed on your machine.
-
 1. Clone the repository:
-   ```bash
-   git clone [https://github.com/cigdemkocak/CarDealerManagementSystem.git](https://github.com/cigdemkocak/CarDealerManagementSystem.git)
-   cd CarDealerManagementSystem
-   
-1. Build and run the application using Docker Compose:
+ ```bash
+ git clone [https://github.com/cigdemkocak/CarDealerManagementSystem.git](https://github.com/cigdemkocak/CarDealerManagementSystem.git)
+ cd CarDealerManagementSystem
+``` 
+2. Build and run the application using Docker Compose:
 ```bash
  docker compose up -d --build
 ```
-2. The application will be up and running at http://localhost:8080, and PostgreSQL will run on port 5432.
-3. To stop the containers:
+3. The application will be up and running at http://localhost:8080, and PostgreSQL will run on port 5432.
+4. To stop the containers:
 ```bash
  docker compose down
 ```
