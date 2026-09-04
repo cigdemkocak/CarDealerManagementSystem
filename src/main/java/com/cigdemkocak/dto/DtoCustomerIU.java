@@ -2,6 +2,7 @@ package com.cigdemkocak.dto;
 
 import java.util.Date;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,13 +11,13 @@ import lombok.Setter;
 @Setter
 public class DtoCustomerIU {
 
-	@NotNull
+	@NotBlank
 	private String firstName;
 	
-	@NotNull
+	@NotBlank
 	private String lastName;
 	
-	@NotNull
+	@NotBlank
 	private String tckn;
 	
 	@NotNull
