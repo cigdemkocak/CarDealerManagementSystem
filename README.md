@@ -29,8 +29,32 @@ A RESTful API built with Spring Boot for managing car dealer operations includin
 - **Authentication** — Register, login and refresh token flows
 - **Currency Integration** — Real-time exchange rate fetching from the Central Bank of Turkey (TCMB)
 - **Car Sales** — Full car purchase flow with USD currency conversion
+- **Testing** — Web-layer tests with JUnit 5 and Mockito, covering success and validation failure scenarios
 
 ---
+## 🧪 Testing
+
+The project includes web-layer tests for REST controllers using **JUnit 5** and **Mockito**, isolating controller logic from the service and persistence layers with `@WebMvcTest`.
+
+**Coverage includes:**
+- ✅ Successful customer creation with valid data
+- ✅ Input validation failures (400 Bad Request) for missing/empty required fields (firstName, lastName, tckn)
+- ✅ Input validation failures for null foreign key references (addressId, accountId)
+- ✅ Verification that the service layer is never invoked when validation fails
+
+**Technologies:**
+- JUnit 5
+- Mockito
+- Spring Boot Test (`@WebMvcTest`)
+- Bean Validation (`@NotBlank`, `@NotNull`)
+
+### Running the tests
+
+```bash
+mvn test
+```
+
+Tests are also automatically executed on every push via the CI pipeline (GitHub Actions).
 
 ## 📌 API Endpoints
 
