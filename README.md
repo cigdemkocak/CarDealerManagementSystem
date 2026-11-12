@@ -13,7 +13,7 @@ A RESTful API built with Spring Boot for managing car dealer operations includin
 - **Spring Data JPA** — Database operations
 - **PostgreSQL** — Relational database
 - **Docker & Docker Compose** — Containerization
-- **GitHub Actions** — CI pipeline for automated build execution
+- **GitHub Actions** — CI pipeline that builds the project and runs all tests on every push
 - **JWT (jjwt 0.11.5)** — Token generation and validation
 - **Lombok** — Boilerplate reduction
 - **Validation** — Request validation
@@ -24,7 +24,7 @@ A RESTful API built with Spring Boot for managing car dealer operations includin
 
 ## ⚙️ Architecture & Features
 
-- **CI/CD Pipeline** — Automated build execution on every push using GitHub Actions
+- **CI/CD Pipeline** — Automated build and test execution (including Testcontainers integration tests) on every push and pull request using GitHub Actions
 - **Exception Architecture** — Global exception handling with custom error messages
 - **JWT Security** — `JWTService` for token generation/validation, `JWTAuthenticationFilter` for request filtering, `AuthEntryPoint` for unauthorized access handling
 - **Authentication** — Register, login and refresh token flows
