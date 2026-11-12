@@ -18,6 +18,7 @@ A RESTful API built with Spring Boot for managing car dealer operations includin
 - **Lombok** — Boilerplate reduction
 - **Validation** — Request validation
 - **Postman** — API testing
+- **Testcontainers** — Integration tests against a real PostgreSQL container
 
 ---
 
@@ -29,23 +30,57 @@ A RESTful API built with Spring Boot for managing car dealer operations includin
 - **Authentication** — Register, login and refresh token flows
 - **Currency Integration** — Real-time exchange rate fetching from the Central Bank of Turkey (TCMB)
 - **Car Sales** — Full car purchase flow with USD currency conversion
-- **Testing** — Web-layer tests with JUnit 5 and Mockito, covering success and validation failure scenarios
+- **Testing** — Web-layer tests with JUnit 5 and Mockito, plus end-to-end integration tests with Testcontainers
 
 ---
 ## 🧪 Testing
 
-The project includes web-layer tests for REST controllers using **JUnit 5** and **Mockito**, isolating controller logic from the service and persistence layers with `@WebMvcTest`.
+The project has two kinds of tests.
 
-**Coverage includes:**
+### Web-layer tests
+
+Controller tests using JUnit 5 and Mockito, isolating controller logic from the service and persistence layers with `@WebMvcTest`.
+
+Coverage includes:
+
 - ✅ Successful customer creation with valid data
 - ✅ Input validation failures (400 Bad Request) for missing/empty required fields (firstName, lastName, tckn)
 - ✅ Input validation failures for null foreign key references (addressId, accountId)
 - ✅ Verification that the service layer is never invoked when validation fails
 
-**Technologies:**
+### Integration tests (Testcontainers)
+
+End-to-end tests start the full Spring Boot application on a random port and run it against a real, disposable **PostgreSQL 15** container. No mocks are used for the web, security, service or persistence layers, so the tests exercise the real HTTP → JWT security → controller → service → repository → database chain. The only mocked component is the external TCMB currency rates service, which keeps the tests independent of the internet and of the daily exchange rate.
+
+**Happy path (ordered flow):**
+
+1. PostgreSQL container is created and running
+2. User registers
+3. User authenticates and receives a JWT token
+4. Address is saved
+5. Account is saved
+6. Customer is saved
+7. Car dealer is saved (with its own address)
+8. Car is saved
+9. Car is assigned to the dealer
+10. Car is bought (car status changes to `SALED`)
+
+**Negative cases:**
+
+- ✅ Saving a customer without a JWT token is rejected
+- ✅ Saving a second car dealer with an already used address is rejected
+- ✅ Selling an already sold car is rejected
+
+Each response is checked field by field against the request (e.g. names, IBAN, amounts, related entity ids).
+
+**Requirements:** Docker must be running, because Testcontainers starts the PostgreSQL container automatically. The tests do not use the database from `docker-compose.yml` or your local PostgreSQL.
+
+### Technologies
+
 - JUnit 5
-- Mockito
-- Spring Boot Test (`@WebMvcTest`)
+- Mockito (`@MockitoBean`)
+- Spring Boot Test (`@WebMvcTest`, `@SpringBootTest`)
+- Testcontainers (PostgreSQL) with `@ServiceConnection`
 - Bean Validation (`@NotBlank`, `@NotNull`)
 
 ### Running the tests
