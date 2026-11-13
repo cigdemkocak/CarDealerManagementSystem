@@ -100,8 +100,8 @@ Once the application is running, the interactive API documentation is available 
 - **Swagger UI:** http://localhost:8080/swagger-ui/index.html
 - **OpenAPI JSON:** http://localhost:8080/v3/api-docs
   
-  ![Swagger UI](docs/swagger-ui.png)
-  ![API Endpoints](docs/swagger-endpoints.png)
+![Swagger UI](docs/swagger-ui.png)
+![API Endpoints](docs/api-endpoints.PNG)
 
 ### How to try the API with Swagger
 
