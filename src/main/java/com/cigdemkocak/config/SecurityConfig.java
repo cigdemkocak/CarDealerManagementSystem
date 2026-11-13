@@ -3,6 +3,7 @@ package com.cigdemkocak.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.event.PublicInvocationEvent;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -30,12 +31,19 @@ public class SecurityConfig {
 	@Autowired
 	private AuthEntryPoint authEntryPoint;
 	
+	public static final String[] SWAGGER_PATHS = {
+			"/swagger-ui/**",
+			"/v3/api-docs/**",
+			"/swagger-ui.html"
+	};
+	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 	
 		http.csrf(csrf -> csrf.disable())
 		.authorizeHttpRequests(request -> 
 		request.requestMatchers(REGISTER,AUTHENTICATE,REFRESH_TOKEN).permitAll()
+		.requestMatchers(SWAGGER_PATHS).permitAll()
 		.anyRequest()
 		.authenticated())
 		.exceptionHandling().authenticationEntryPoint(authEntryPoint).and()
