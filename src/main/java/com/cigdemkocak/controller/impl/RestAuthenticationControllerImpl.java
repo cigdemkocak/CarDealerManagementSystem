@@ -14,8 +14,10 @@ import com.cigdemkocak.dto.DtoUser;
 import com.cigdemkocak.dto.RefreshTokenRequest;
 import com.cigdemkocak.service.IAuthenticationService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
+@Tag(name = "Authentication", description = "Register, login and refresh token (public endpoints)")
 @RestController
 public class RestAuthenticationControllerImpl extends RestBaseController implements IRestAuthenticationController{
 	

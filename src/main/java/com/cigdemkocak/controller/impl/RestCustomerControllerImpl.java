@@ -13,8 +13,10 @@ import com.cigdemkocak.dto.DtoCustomer;
 import com.cigdemkocak.dto.DtoCustomerIU;
 import com.cigdemkocak.service.ICustomerService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
+@Tag(name = "Customer", description = "Customer operations")
 @RestController
 @RequestMapping("/rest/api/customer")
 public class RestCustomerControllerImpl extends RestBaseController implements IRestCustomerController{

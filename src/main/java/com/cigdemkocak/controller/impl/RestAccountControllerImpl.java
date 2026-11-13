@@ -13,8 +13,10 @@ import com.cigdemkocak.dto.DtoAccount;
 import com.cigdemkocak.dto.DtoAccountIU;
 import com.cigdemkocak.service.IAccountService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
+@Tag(name = "Account", description = "Account operations")
 @RestController
 @RequestMapping("/rest/api/account")
 public class RestAccountControllerImpl extends RestBaseController implements IRestAccountController{

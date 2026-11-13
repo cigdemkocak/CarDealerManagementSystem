@@ -12,6 +12,9 @@ import com.cigdemkocak.controller.RootEntity;
 import com.cigdemkocak.dto.CurrencyRatesResponse;
 import com.cigdemkocak.service.ICurrencyRatesService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name = "Currency Rates", description = "Exchange rates from the Central Bank of Turkey (TCMB)")
 @RestController
 @RequestMapping("/rest/api/")
 public class RestCurrencyRatesControllerImpl extends RestBaseController implements IRestCurrencyRatesController{

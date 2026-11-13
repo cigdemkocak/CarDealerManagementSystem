@@ -13,8 +13,10 @@ import com.cigdemkocak.dto.DtoDealerCar;
 import com.cigdemkocak.dto.DtoDealerCarIU;
 import com.cigdemkocak.service.IDealerCarService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
+@Tag(name = "Dealer Car", description = "Assign cars to dealers")
 @RestController
 @RequestMapping("/rest/api/dealerCar")
 public class RestDealerCarControllerImpl extends RestBaseController implements IRestDealerCarController{

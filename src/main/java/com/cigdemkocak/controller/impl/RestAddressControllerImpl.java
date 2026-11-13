@@ -13,8 +13,10 @@ import com.cigdemkocak.dto.DtoAddress;
 import com.cigdemkocak.dto.DtoAddressIU;
 import com.cigdemkocak.service.IAddressService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
+@Tag(name = "Address", description = "Address operations")
 @RestController
 @RequestMapping("/rest/api/address")
 public class RestAddressControllerImpl extends RestBaseController implements IRestAddressController{
