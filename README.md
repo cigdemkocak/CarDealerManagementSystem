@@ -19,6 +19,7 @@ A RESTful API built with Spring Boot for managing car dealer operations includin
 - **Validation** — Request validation
 - **Postman** — API testing
 - **Testcontainers** — Integration tests against a real PostgreSQL container
+- **Swagger / OpenAPI (springdoc-openapi)** — Interactive API documentation with JWT authorization support
 
 ---
 
@@ -31,6 +32,7 @@ A RESTful API built with Spring Boot for managing car dealer operations includin
 - **Currency Integration** — Real-time exchange rate fetching from the Central Bank of Turkey (TCMB)
 - **Car Sales** — Full car purchase flow with USD currency conversion
 - **Testing** — Web-layer tests with JUnit 5 and Mockito, plus end-to-end integration tests with Testcontainers
+- **API Documentation** — Interactive Swagger UI with built-in JWT "Authorize" support, so protected endpoints can be tested directly from the browser
 
 ---
 ## 🧪 Testing
@@ -90,6 +92,21 @@ mvn test
 ```
 
 Tests are also automatically executed on every push via the CI pipeline (GitHub Actions).
+
+## 📖 API Documentation (Swagger)
+
+Once the application is running, the interactive API documentation is available at:
+
+- **Swagger UI:** http://localhost:8080/swagger-ui/index.html
+- **OpenAPI JSON:** http://localhost:8080/v3/api-docs
+
+### How to try the API with Swagger
+
+1. Open Swagger UI in your browser
+2. Create a user with `POST /register`
+3. Log in with `POST /authenticate` and copy the `accessToken` value from the `payload` object in the response
+4. Click the **Authorize** button (top right) and paste the token (without the `Bearer` prefix)
+5. Now you can call any protected endpoint directly from the UI
 
 ## 📌 API Endpoints
 
@@ -167,14 +184,14 @@ Tests are also automatically executed on every push via the CI pipeline (GitHub 
 Make sure you have [Docker](https://www.docker.com/) and Docker Compose installed on your machine.
 1. Clone the repository:
  ```bash
- git clone [https://github.com/cigdemkocak/CarDealerManagementSystem.git](https://github.com/cigdemkocak/CarDealerManagementSystem.git)
+ git clone https://github.com/cigdemkocak/CarDealerManagementSystem.git
  cd CarDealerManagementSystem
 ``` 
 2. Build and run the application using Docker Compose:
 ```bash
  docker compose up -d --build
 ```
-3. The application will be up and running at http://localhost:8080, and PostgreSQL will run on port 5432.
+3. The application will be up and running at http://localhost:8080 (Swagger UI: http://localhost:8080/swagger-ui/index.html), and PostgreSQL will run on port 5432.
 4. To stop the containers:
 ```bash
  docker compose down
@@ -206,4 +223,5 @@ spring.jpa.hibernate.ddl-auto=update
 mvn spring-boot:run
 ```
 
-4. Test with Postman on `http://localhost:8080`
+4. Test with Swagger UI at http://localhost:8080/swagger-ui/index.html or with Postman at http://localhost:8080
+
