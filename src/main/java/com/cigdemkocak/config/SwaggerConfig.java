@@ -30,7 +30,7 @@ public class SwaggerConfig {
 
 	                            **How to try it**
 	                            1. Create a user with `/register`
-	                            2. Log in with `/authenticate` and copy the access token
+	                            2. Log in with `/authenticate` and copy `payload.accessToken` from the response
 	                            3. Click the **Authorize** button (top right) and paste the token
 	                            4. Try the protected endpoints
 
